@@ -1,4 +1,4 @@
-package com.demo.util;
+package com.wpr.util;
 
 import java.util.HashMap;
 import java.util.List;
