@@ -30,7 +30,7 @@ public class Message {
 		Map<String , Object> map = new HashMap<String, Object>();
 		map.put("code", 1);
 		map.put("error", "");
-		map.put("date", "");
+		map.put("data", "");
 		return map;
 	}
 	/**成功，并有返回值
@@ -60,7 +60,7 @@ public class Message {
 		Map<String , Object> map = new HashMap<String, Object>();
 		map.put("code", 0);
 		map.put("error", "参数为空！");
-		map.put("date", "");
+		map.put("data", "");
 		return map;
 	}
 	/**未登录的返回值
@@ -70,7 +70,7 @@ public class Message {
 		Map<String , Object> map = new HashMap<String, Object>();
 		map.put("code", 2);
 		map.put("error", "未登录！");
-		map.put("date", "");
+		map.put("data", "");
 		return map;
 	}
 }

@@ -12,7 +12,7 @@ import org.springframework.stereotype.Repository;
 import com.wpr.dao.BDao;
 
 @Repository("bDao")
-@SuppressWarnings("all")
+//@SuppressWarnings("all")
 public class BDaoImpl<T> implements BDao<T>{
 	
  	@Autowired

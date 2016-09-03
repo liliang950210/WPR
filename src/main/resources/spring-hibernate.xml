@@ -17,7 +17,17 @@
 
     <!-- Hibernate4 -->
     <!-- 加载资源文件  其中包含变量信息，必须在Spring配置文件的最前面加载，即第一个加载-->
-    <context:property-placeholder location="classpath:jdbc.properties" />
+    <bean
+class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer"
+lazy-init="true">
+<property name="systemPropertiesModeName" value="SYSTEM_PROPERTIES_MODE_OVERRIDE" />
+<property name="ignoreResourceNotFound" value="true" />
+<property name="locations">
+<list>
+<value>classpath:jdbc.properties</value>
+</list>
+</property>
+</bean>  
     
     <bean id="sessionFactory" 
         class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
@@ -28,15 +38,20 @@
                 <value>com.wpr.entity</value>
             </list>
         </property>
+         
         <property name="hibernateProperties">
             <props>
+            	<!-- 配置每次启动时是否需要重新构建数据库 -->
                 <prop key="hibernate.hbm2ddl.auto">${hibernate.hbm2ddl.auto}</prop>
                 <prop key="hibernate.dialect">${hibernate.dialect}</prop>
                 <prop key="hibernate.show_sql">${hibernate.show_sql}</prop>
+                
                 <!--  <prop key="hibernate.current_session_context_class">thread</prop> --> 
                 
             </props>
         </property>
+        
+        
     </bean>
     
     <!-- 数据库映射 -->
@@ -64,6 +79,7 @@
         <tx:attributes>
             <tx:method name="add*" propagation="REQUIRED" />
             <tx:method name="get*" propagation="REQUIRED" />
+            <tx:method name="update*" propagation="REQUIRED"/>
             <tx:method name="*" read-only="true" />
         </tx:attributes>
     </tx:advice>

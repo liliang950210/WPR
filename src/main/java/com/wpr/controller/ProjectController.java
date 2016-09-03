@@ -31,9 +31,18 @@ public class ProjectController {
 	}
 	@RequestMapping("/updateProject")
 	@ResponseBody
-	public Object updateObject(){
+	public Object updateObject(TProject tProject){
 		
+		return Message.getMessage();
 	}
+	
+	@RequestMapping("/getProject")
+	@ResponseBody
+	public Object getAllProject(){
+		
+		return Message.getMessage(projectService.getAllProject());
+	}
+	
 	
 
 }

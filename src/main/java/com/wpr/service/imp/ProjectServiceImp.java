@@ -1,5 +1,7 @@
 package com.wpr.service.imp;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -27,5 +29,14 @@ public class ProjectServiceImp implements ProjectService{
 		// TODO Auto-generated method stub
 		bDao.update(tProject);
 	}
+
+	public List getAllProject() {
+		// TODO Auto-generated method stub
+		String hql = "from TProject";
+		List resultList = bDao.find(hql);
+		
+		return resultList;
+	}
+	
 
 }
